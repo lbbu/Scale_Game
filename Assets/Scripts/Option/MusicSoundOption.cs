@@ -24,14 +24,20 @@ public class MusicSoundOption : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OnValueChanged();
 
+    }
+
+    private void OnValueChanged()
+    {
         if (previosValue != MusicSoundSlider.value)
         {
             MusicSoundValueText.text = Mathf.Floor(MusicSoundSlider.value * 100).ToString();
             PlayerPrefs.SetFloat("MusicSoundValue", MusicSoundSlider.value);
+
+            GameValues.Instance.UpdateMusicSoundValue();
         }
         previosValue = MusicSoundSlider.value;
-
     }
 
     private void UpdateUI()
@@ -40,6 +46,8 @@ public class MusicSoundOption : MonoBehaviour
         float value = PlayerPrefs.GetFloat("MusicSoundValue");
         MusicSoundSlider.value = value;
         MusicSoundValueText.text = Mathf.Floor(MusicSoundSlider.value * 100).ToString();
+
+        GameValues.Instance.UpdateMusicSoundValue();
 
     }
 

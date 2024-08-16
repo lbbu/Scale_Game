@@ -23,14 +23,20 @@ public class VFXSoundOption : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OnValueChanged();
 
+    }
+
+    private void OnValueChanged()
+    {
         if (previosValue != VFXSoundSlider.value)
         {
             VFXSoundValueText.text = Mathf.Floor(VFXSoundSlider.value * 100).ToString();
             PlayerPrefs.SetFloat("VFXSoundValue", VFXSoundSlider.value);
+
+            GameValues.Instance.UpdateVFXSoundValue();
         }
         previosValue = VFXSoundSlider.value;
-
     }
 
     private void UpdateUI()
@@ -39,6 +45,8 @@ public class VFXSoundOption : MonoBehaviour
         float value = PlayerPrefs.GetFloat("VFXSoundValue");
         VFXSoundSlider.value = value;
         VFXSoundValueText.text = Mathf.Floor(VFXSoundSlider.value * 100).ToString();
+        
+        GameValues.Instance.UpdateVFXSoundValue();
 
     }
 }
