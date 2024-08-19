@@ -8,20 +8,8 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
-    public TextMeshProUGUI messageText;
+    //[HideInInspector] public GameObject selectedObject;
 
-    [SerializeField] private GameObject darkMoodImage;
-    [SerializeField] private GameObject lightMoodImage;
-
-    [SerializeField] private GameObject[] darkMoodObjects;
-    [SerializeField] private GameObject[] lightMoodObjects;
-
-    [SerializeField] private GameObject[] bookScreens;
-    [SerializeField] private GameObject calcScreen;
-    [SerializeField] private GameObject exitScreen;
-
-
-    private bool darkMood;
 
     private void Awake()
     {
@@ -32,11 +20,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         
-        darkMoodImage.SetActive(false);
-        lightMoodImage.SetActive(true);
-        darkMood = false;
-
-        ActivatAndHideObjects(lightMoodObjects, darkMoodObjects);
+       
 
     }
 
@@ -48,100 +32,25 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         EscapePressed();
 
-
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        /*
+        if (Input.GetKeyDown(KeyCode.E))
         {
-
-            if(darkMood)
+            if(selectedObject)
             {
-
-                darkMoodImage.SetActive(false);
-                lightMoodImage.SetActive(true);
-
-                darkMood = false;
-
-                ActivatAndHideObjects(lightMoodObjects, darkMoodObjects);
-
+                selectedObject.GetComponent<InteractableObject>().InteractAction();
             }
-            else
-            {
-                darkMoodImage.SetActive(true);
-                lightMoodImage.SetActive(false);
-
-                darkMood = true;
-
-                ActivatAndHideObjects(darkMoodObjects, lightMoodObjects);
-
-            }
-
         }
+        */
 
     }
 
-    private void ActivatAndHideObjects(GameObject[] activateObjects, GameObject[] hideObjects)
-    {
-
-        foreach(GameObject obj in activateObjects)
-        {
-            obj.SetActive(true);
-        }
-
-        foreach(GameObject obj in hideObjects)
-        {
-            obj.SetActive(false);
-        }
-
-    }
+   
 
 
     private void EscapePressed()
     {
         
-        foreach(var bookScreen in bookScreens)
-        {
-            if (bookScreen.activeSelf)
-            {
-
-                bookScreen.SetActive(false);
-
-                PlayerCam.Instance.AbleCamerToMove();
-
-                PlayerMovement.Instance.ableToMove = true;
-
-                return;
-
-            }
-        }
-
-        
-        if (calcScreen.activeSelf)
-        {
-
-            calcScreen.SetActive(false);
-
-            PlayerCam.Instance.AbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = true;
-
-        }
-        else if (exitScreen.activeSelf)
-        {
-
-            exitScreen.SetActive(false);
-
-            PlayerCam.Instance.AbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = true;
-
-        }
-        else
-        {
-            exitScreen.SetActive(true);
-
-            PlayerCam.Instance.DisAbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = false;
-        }
+       
 
     }
 

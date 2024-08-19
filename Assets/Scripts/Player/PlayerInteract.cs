@@ -85,6 +85,9 @@ public class PlayerInteract : MonoBehaviour
             }
             
         }
+
+       // Player.Instance.selectedObject = currentInteractableObject;
+
     }
 
 
