@@ -20,27 +20,20 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void InteractAction()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.localScale = new Vector3((float)0.1 + transform.localScale.x, (float)0.1 + transform.localScale.y, (float)0.1 + transform.localScale.z);
-            trancparentCube.transform.localScale = new Vector3((float)0.1 + trancparentCube.transform.localScale.x, (float)0.1 + trancparentCube.transform.localScale.y, (float)0.1 + trancparentCube.transform.localScale.z);
+        
+    }
 
+    public virtual void AltInteractAction()
+    {
 
-        }
+    }
 
+    public virtual void ScaleUp()
+    {
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-
-
-            transform.localScale = new Vector3((float)(transform.localScale.x - 0.5), (float)(transform.localScale.y - 0.5), (float)(transform.localScale.z - 0.5));
-            trancparentCube.transform.localScale = new Vector3((float)(trancparentCube.transform.localScale.x - 0.5), (float)(trancparentCube.transform.localScale.y - 0.5), (float)(trancparentCube.transform.localScale.z - 0.5));
-
-
-
-        }
-
-
+    }
+    public virtual void ScaleDawn()
+    {
 
     }
 

@@ -8,20 +8,14 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
-    public TextMeshProUGUI messageText;
+    public Transform catchedObjectPos;
 
-    [SerializeField] private GameObject darkMoodImage;
-    [SerializeField] private GameObject lightMoodImage;
+    [HideInInspector] public GameObject selectedObject;
 
-    [SerializeField] private GameObject[] darkMoodObjects;
-    [SerializeField] private GameObject[] lightMoodObjects;
+    private GameObject catchedObject;
 
-    [SerializeField] private GameObject[] bookScreens;
-    [SerializeField] private GameObject calcScreen;
-    [SerializeField] private GameObject exitScreen;
+    [HideInInspector] public float scaleFactor = 1f;
 
-
-    private bool darkMood;
 
     private void Awake()
     {
@@ -32,11 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         
-        darkMoodImage.SetActive(false);
-        lightMoodImage.SetActive(true);
-        darkMood = false;
-
-        ActivatAndHideObjects(lightMoodObjects, darkMoodObjects);
+       
 
     }
 
@@ -49,99 +39,54 @@ public class Player : MonoBehaviour
         EscapePressed();
 
 
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
-            if(darkMood)
+            if (selectedObject)
             {
-
-                darkMoodImage.SetActive(false);
-                lightMoodImage.SetActive(true);
-
-                darkMood = false;
-
-                ActivatAndHideObjects(lightMoodObjects, darkMoodObjects);
-
+                if(PlayerInteract.Instance.ableToInteract)
+                {
+                    selectedObject.GetComponent<InteractableObject>().InteractAction();
+                    catchedObject = selectedObject;
+                }
+                else
+                {
+                    catchedObject.GetComponent<InteractableObject>().AltInteractAction();
+                    catchedObject = null;
+                }
             }
-            else
-            {
-                darkMoodImage.SetActive(true);
-                lightMoodImage.SetActive(false);
-
-                darkMood = true;
-
-                ActivatAndHideObjects(darkMoodObjects, lightMoodObjects);
-
-            }
-
         }
+        
+
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            if(catchedObject)
+            {
+
+                catchedObject.GetComponent<InteractableObject>().ScaleUp();
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (catchedObject)
+            {
+
+                catchedObject.GetComponent<InteractableObject>().ScaleDawn();
+
+            }
+        }
+
 
     }
 
-    private void ActivatAndHideObjects(GameObject[] activateObjects, GameObject[] hideObjects)
-    {
-
-        foreach(GameObject obj in activateObjects)
-        {
-            obj.SetActive(true);
-        }
-
-        foreach(GameObject obj in hideObjects)
-        {
-            obj.SetActive(false);
-        }
-
-    }
+   
 
 
     private void EscapePressed()
     {
         
-        foreach(var bookScreen in bookScreens)
-        {
-            if (bookScreen.activeSelf)
-            {
-
-                bookScreen.SetActive(false);
-
-                PlayerCam.Instance.AbleCamerToMove();
-
-                PlayerMovement.Instance.ableToMove = true;
-
-                return;
-
-            }
-        }
-
-        
-        if (calcScreen.activeSelf)
-        {
-
-            calcScreen.SetActive(false);
-
-            PlayerCam.Instance.AbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = true;
-
-        }
-        else if (exitScreen.activeSelf)
-        {
-
-            exitScreen.SetActive(false);
-
-            PlayerCam.Instance.AbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = true;
-
-        }
-        else
-        {
-            exitScreen.SetActive(true);
-
-            PlayerCam.Instance.DisAbleCamerToMove();
-
-            PlayerMovement.Instance.ableToMove = false;
-        }
+       
 
     }
 

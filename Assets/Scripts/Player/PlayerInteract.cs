@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
 
+    public static PlayerInteract Instance;
+
     [HideInInspector] public bool ableToInteract = true;
 
     [SerializeField] private Transform playerCameraTransform;
@@ -14,10 +16,9 @@ public class PlayerInteract : MonoBehaviour
     private GameObject prevInteractableObject;
     private GameObject currentInteractableObject;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class PlayerInteract : MonoBehaviour
     {
 
         InteractWithObjectToChangeTheirLook();
-        InteractWithObject();
+        //InteractWithObject();
 
     }
 
@@ -85,6 +86,9 @@ public class PlayerInteract : MonoBehaviour
             }
             
         }
+
+       Player.Instance.selectedObject = currentInteractableObject;
+
     }
 
 
