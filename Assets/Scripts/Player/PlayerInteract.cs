@@ -19,6 +19,12 @@ public class PlayerInteract : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        if (!playerCameraTransform)
+        {
+            playerCameraTransform = Camera.main.transform;
+        }
+
     }
 
     // Update is called once per frame
