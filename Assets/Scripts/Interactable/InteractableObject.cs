@@ -22,8 +22,8 @@ public class InteractableObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            transform.localScale = new Vector3((float)0.5 + transform.localScale.x, (float)0.5 + transform.localScale.y, (float)0.5 + transform.localScale.z);
-            trancparentCube.transform.localScale = new Vector3((float)0.5 + trancparentCube.transform.localScale.x, (float)0.5 + trancparentCube.transform.localScale.y, (float)0.5 + trancparentCube.transform.localScale.z);
+            transform.localScale = new Vector3((float)0.1 + transform.localScale.x, (float)0.1 + transform.localScale.y, (float)0.1 + transform.localScale.z);
+            trancparentCube.transform.localScale = new Vector3((float)0.1 + trancparentCube.transform.localScale.x, (float)0.1 + trancparentCube.transform.localScale.y, (float)0.1 + trancparentCube.transform.localScale.z);
 
 
         }
