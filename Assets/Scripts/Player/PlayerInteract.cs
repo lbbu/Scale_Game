@@ -92,39 +92,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
 
-    private void InteractWithObject()
-    {
-
-        if (Input.GetKeyDown(KeyCode.E) && ableToInteract)
-        {
-
-            if(currentInteractableObject != null)
-            {
-                //do something
-                currentInteractableObject.GetComponent<InteractableObject>().InteractAction();
-            }
-            else
-            {
-                //do nothing
-            }
-
-           
-        }
-        if (Input.GetKeyDown(KeyCode.Q) && ableToInteract)
-        {
-
-            if (currentInteractableObject != null)
-            {
-                //do something
-                currentInteractableObject.GetComponent<InteractableObject>().InteractAction();
-            }
-            else
-            {
-                //do nothing
-            }
-
-        }
-    }
+    
 
 
 }
