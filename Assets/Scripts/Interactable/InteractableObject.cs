@@ -23,4 +23,18 @@ public class InteractableObject : MonoBehaviour
         
     }
 
+    public virtual void AltInteractAction()
+    {
+
+    }
+
+    public virtual void ScaleUp()
+    {
+
+    }
+    public virtual void ScaleDawn()
+    {
+
+    }
+
 }

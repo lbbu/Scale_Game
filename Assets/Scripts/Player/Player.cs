@@ -8,7 +8,13 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
-    //[HideInInspector] public GameObject selectedObject;
+    public Transform catchedObjectPos;
+
+    [HideInInspector] public GameObject selectedObject;
+
+    private GameObject catchedObject;
+
+    [HideInInspector] public float scaleFactor = 1f;
 
 
     private void Awake()
@@ -32,15 +38,45 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         EscapePressed();
 
-        /*
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(selectedObject)
+            if (selectedObject)
             {
-                selectedObject.GetComponent<InteractableObject>().InteractAction();
+                if(PlayerInteract.Instance.ableToInteract)
+                {
+                    selectedObject.GetComponent<InteractableObject>().InteractAction();
+                    catchedObject = selectedObject;
+                }
+                else
+                {
+                    catchedObject.GetComponent<InteractableObject>().AltInteractAction();
+                    catchedObject = null;
+                }
             }
         }
-        */
+        
+
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            if(catchedObject)
+            {
+
+                catchedObject.GetComponent<InteractableObject>().ScaleUp();
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (catchedObject)
+            {
+
+                catchedObject.GetComponent<InteractableObject>().ScaleDawn();
+
+            }
+        }
+
 
     }
 
