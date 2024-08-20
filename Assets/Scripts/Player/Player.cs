@@ -12,9 +12,13 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public GameObject selectedObject;
 
-    private GameObject catchedObject;
+    [HideInInspector] public GameObject catchedObject;
 
     [HideInInspector] public float scaleFactor = 1f;
+
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject InstructionScreen;
+    [SerializeField] private GameObject optionScreen;
 
 
     private void Awake()
@@ -25,8 +29,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         
-       
 
     }
 
@@ -46,12 +50,10 @@ public class Player : MonoBehaviour
                 if(PlayerInteract.Instance.ableToInteract)
                 {
                     selectedObject.GetComponent<InteractableObject>().InteractAction();
-                    catchedObject = selectedObject;
                 }
                 else
                 {
                     catchedObject.GetComponent<InteractableObject>().AltInteractAction();
-                    catchedObject = null;
                 }
             }
         }
@@ -85,8 +87,22 @@ public class Player : MonoBehaviour
 
     private void EscapePressed()
     {
-        
-       
+
+        if (!Input.GetKeyDown(KeyCode.Escape))
+            return;
+
+        if (pauseScreen.activeSelf)
+        {
+            pauseScreen.GetComponent<PauseScreen>().Hide();
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+            GameValues.Instance.ableToDoAnyThing = false;
+
+            PlayerCam.Instance.DisAbleCamerToMove();
+
+        }
 
     }
 

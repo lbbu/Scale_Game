@@ -22,6 +22,8 @@ public class InteractAndCatchObject : InteractableObject
 
         transform.GetComponent<BoxCollider>().isTrigger = true;
 
+        Player.Instance.catchedObject = Player.Instance.selectedObject;
+
     }
 
     public override void AltInteractAction()
@@ -30,10 +32,13 @@ public class InteractAndCatchObject : InteractableObject
         PlayerInteract.Instance.ableToInteract = true;
 
         transform.parent.SetParent(null);
-        //transform.parent.GetComponent<Rigidbody>().isKinematic = false;
         transform.GetComponent<BoxCollider>().isTrigger = false;
 
-        //Invoke(nameof(MakeObjectKinematic), 2f);
+        transform.parent.GetComponent<Rigidbody>().isKinematic = false;
+        Invoke(nameof(MakeObjectKinematic), 2f);
+
+        Player.Instance.catchedObject = null;
+
     }
 
     private void MakeObjectKinematic()

@@ -7,8 +7,12 @@ public class GameValues : MonoBehaviour
 
     public static GameValues Instance { get; private set; }
 
+    [HideInInspector] public bool ableToDoAnyThing;
+
     [HideInInspector] public float musicSoundValue;
     [HideInInspector] public float VFXSoundValue;
+
+    [HideInInspector] public int levelProgress;
 
 
     private void Awake()
@@ -20,6 +24,17 @@ public class GameValues : MonoBehaviour
     private void Start()
     {
         UpdateValues();
+
+        levelProgress = PlayerPrefs.GetInt("levelProgress");
+        if(levelProgress == 0)
+        {
+            PlayerPrefs.SetInt("levelProgress", 1);
+            levelProgress = PlayerPrefs.GetInt("levelProgress");
+        }
+
+        Instance.ableToDoAnyThing = true;
+
+
     }
 
     public void UpdateValues()

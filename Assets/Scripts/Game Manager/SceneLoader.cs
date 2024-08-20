@@ -18,10 +18,26 @@ public class SceneLoader : MonoBehaviour
         
     }
 
-    public void BUTTON_PLAY()
+    public void BUTTON_LEVEL_ONE()
     {
 
-        SceneManager.LoadSceneAsync("Game");
+        Loader.Load(Loader.Scene.LevelOne);
+
+    }
+
+    public void BUTTON_LEVEL_TWO()
+    {
+        if (GameValues.Instance.levelProgress < 2)
+            return;
+
+        Loader.Load(Loader.Scene.LevelTwo);
+
+    }
+
+    public void BUTTON_LEVELs()
+    {
+
+        Loader.Load(Loader.Scene.Levels);
 
     }
 
@@ -32,13 +48,13 @@ public class SceneLoader : MonoBehaviour
 
     public void BUTTON_MAIN_MENU()
     {
-        SceneManager.LoadSceneAsync("MainMenu");
+        Loader.Load(Loader.Scene.MainMenu);
     }
 
 
     public void BUTTON_OPTION_MENU()
     {
-        SceneManager.LoadSceneAsync("OptionMenu");
+        Loader.Load(Loader.Scene.OptionMenu);
     }
 
 }

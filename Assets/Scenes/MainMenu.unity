@@ -512,7 +512,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1422704334}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: BUTTON_PLAY
+        m_MethodName: BUTTON_LEVELs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1496,6 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSoundValue: 0
   VFXSoundValue: 0
+  levelProgress: 0
 --- !u!1 &1886837774
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        ableToMoveCamer = true;
+        GameValues.Instance.ableToDoAnyThing = true;
 
     }
 
@@ -45,7 +45,7 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        ableToMoveCamer = false;
+        GameValues.Instance.ableToDoAnyThing = false;
 
     }
 
@@ -53,7 +53,7 @@ public class PlayerCam : MonoBehaviour
     void Update()
     {
 
-        if(!ableToMoveCamer)
+        if(!GameValues.Instance.ableToDoAnyThing)
             return;
 
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
