@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1956576614211945723}
+  - component: {fileID: 8272865387322016824}
   m_Layer: 0
   m_Name: Interactable cube holder
   m_TagString: Untagged
@@ -150,8 +151,21 @@ Transform:
   - {fileID: 2270035085323770968}
   - {fileID: 5355962620901848623}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8272865387322016824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667606860238762374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac17d921cfe88e849b5e83d51fee5de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trancparentCube: {fileID: 7100825498853811325}
 --- !u!1 &7100825498853811325
 GameObject:
   m_ObjectHideFlags: 0
