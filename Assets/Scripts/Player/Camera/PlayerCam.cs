@@ -7,8 +7,6 @@ public class PlayerCam : MonoBehaviour
 
     public static PlayerCam Instance;
 
-    private bool ableToMoveCamer = true;
-
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
@@ -25,8 +23,6 @@ public class PlayerCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        ableToMoveCamer = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

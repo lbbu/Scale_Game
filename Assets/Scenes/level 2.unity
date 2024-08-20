@@ -179,7 +179,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable cube holder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8272865387322016824, guid: e127235e7ce67cf4a8f1fe10de4b4a6c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -94,6 +94,9 @@ public class Player : MonoBehaviour
         if (pauseScreen.activeSelf)
         {
             pauseScreen.GetComponent<PauseScreen>().Hide();
+        }else if (optionScreen.activeSelf || InstructionScreen.activeSelf)
+        {
+            //UIManagerr.Instance.BUTTON_PAUSE_SCREEN_BACK();
         }
         else
         {
